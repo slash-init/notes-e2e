@@ -9,6 +9,7 @@ const createNote = async (page, content) => {
     await page.getByRole('button', { name: 'new note' }).click()
     await page.getByRole('textbox').fill(content)
     await page.getByRole('button', { name: 'save' }).click()
+    await page.getByText(content).waitFor() //pauses execution until the element actually appears in the DOM
 }
 
 export { loginWith, createNote }
